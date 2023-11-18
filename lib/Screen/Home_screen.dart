@@ -28,16 +28,20 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               Row(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      child: Image.asset('Images/Ellipse 1.png'),
-                    ),
+                  Container(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        child: Image.asset('Images/Ellipse 1.png'),
+                      ),
 
+                    ),
                   ),
+                  Text('Zack'),
                 ],
               ),
-              Row(children: [Text('Zack')],)
+
+
 
             ],
           ),
