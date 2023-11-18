@@ -45,7 +45,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                     ),
-                    Image.asset("Images/Verified.png"),
+                    SizedBox(
+                      width: 2,
+                    ),
+                    Image.asset("Images/Verified23.png"),
                   ],
                 ),
                 trailing: Image.asset('Images/google-logo-9808.png'),

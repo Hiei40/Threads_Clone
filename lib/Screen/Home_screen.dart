@@ -1,52 +1,47 @@
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+import 'Postscreen.dart';
+import 'Profile_screen.dart';
+import 'Timeline_screen.dart';
 
+class HomeScreen extends StatefulWidget {
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int selectedIndex = 0;
+  List<Widget> _screenList = [
+    TimelineScreen(),
+    Postscreen(),
+    ProfileScreen(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              'Images/Vector.png',
-              width: 30.11,
-            ),
-          ],
-        ),
-      ),
-      body:Column(
-        children: [
-          Row(
-            children: [
-              Row(
-                children: [
-                  Container(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        child: Image.asset('Images/Ellipse 1.png'),
-                      ),
-
-                    ),
-                  ),
-                  Text('Zack'),
-                ],
-              ),
-
-
-
-            ],
+      body: _screenList[selectedIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: (int index) {
+          setState(() {
+            selectedIndex = index;
+          });
+        },
+        currentIndex: selectedIndex,
+        selectedItemColor: Colors.blue, // Set the color for the selected item
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: "Home",
           ),
-
-
+          BottomNavigationBarItem(
+            icon: Icon(Icons.add_box_outlined),
+            label: "Post",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: "Profile",
+          ),
         ],
       ),
     );
