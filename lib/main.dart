@@ -1,5 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:untitled/Cubit/timeline_cubit/timeline_cubit.dart';
 import 'package:untitled/Screen/Home_screen.dart';
 import 'package:untitled/Screen/LoginScreen.dart';
 import 'package:untitled/utils/ui/themes.dart';
@@ -20,11 +22,18 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: lightTheme,
-      darkTheme: DarkTheme,
-      debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => TimelineCubit(),
+        ),
+      ],
+      child: MaterialApp(
+        theme: lightTheme,
+        darkTheme: DarkTheme,
+        debugShowCheckedModeBanner: false,
+        home: HomeScreen(),
+      ),
     );
   }
 }

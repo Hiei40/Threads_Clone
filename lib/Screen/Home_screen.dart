@@ -22,13 +22,23 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: _screenList[selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-        onTap: (int index) {
-          setState(() {
-            selectedIndex = index;
-          });
-        },
         currentIndex: selectedIndex,
-        selectedItemColor: Colors.blue, // Set the color for the selected item
+
+        onTap: (int index) {
+          if (index == 1) {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => Postscreen(),
+              ),
+            );
+          }
+
+          if (index != 1) {
+            setState(() {
+              selectedIndex = index;
+            });
+          }
+        },
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
